@@ -1,3 +1,5 @@
+package test.profileassignment;
+
 /**
  * Created by David on 2017-02-06.
  */

@@ -16,24 +16,11 @@ public class SharedPreferenceHelper{
         sharedPreferences = context.getSharedPreferences("ProfilePreference",Context.MODE_PRIVATE);
     }
 
-    public void saveProfileName(String name){
+    /*public void saveProfile(Profile profile){
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("profileName",name);
+        editor.putString("profileName",profile);
         editor.commit();
-    }
-
-    public void saveAge(String age){
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("profileAge",age);
-        editor.commit();
-
-    }
-
-    public void saveID(String id){
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("studentID", id);
-        editor.commit();
-    }
+    }*/
 
     public String getProfileName(){
         return sharedPreferences.getString("profileName",null);

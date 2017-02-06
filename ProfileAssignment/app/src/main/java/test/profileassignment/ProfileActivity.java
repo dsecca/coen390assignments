@@ -6,20 +6,48 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class ProfileActivity extends AppCompatActivity {
 
     protected Toolbar profileToolbar = null;
+    protected EditText profileName = null;
+    protected EditText profileAge = null;
+    protected EditText studentID = null;
+    protected Profile profile = null;
+    private SharedPreferenceHelper sharedPreferenceHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        sharedPreferenceHelper = new SharedPreferenceHelper(ProfileActivity.this);
         profileToolbar = (Toolbar) findViewById(R.id.profileToolbar);
         setSupportActionBar(profileToolbar);
         //Enable the Up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        profileName = (EditText) findViewById(R.id.profileName);
+        profileAge = (EditText) findViewById(R.id.profileAge);
+        studentID = (EditText) findViewById(R.id.studentID);
+
+        final Button profileSaveButton = (Button) findViewById(R.id.profileSaveButton);
+
+        profileSaveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String name = profileName.getText().toString();
+                String age = profileAge.getText().toString();
+                String id = studentID.getText().toString();
+                sharedPreferenceHelper.saveProfileName(name);//here we'll pass in the newly saved object to the shared preferences
+
+                /*Toast toast = Toast.makeText(getApplicationContext(), "saved" , Toast.LENGTH_LONG);
+                toast.show();*/
+
+            }
+        });
     }
 
     //Create the menu on the toolbar
