@@ -22,4 +22,48 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/profileName"
+        android:layout_alignRight="@+id/profileName"
+        android:layout_alignEnd="@+id/profileName"
+        android:layout_marginTop="43dp"
+        android:id="@+id/profileAge"
+        android:hint="Age" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/profileAge"
+        android:layout_alignRight="@+id/profileAge"
+        android:layout_alignEnd="@+id/profileAge"
+        android:layout_marginTop="57dp"
+        android:id="@+id/studentID"
+        android:hint="Student ID" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="87dp"
+        android:id="@+id/profileName"
+        android:layout_below="@+id/profileToolbar"
+        android:layout_centerHorizontal="true"
+        android:hint="Name" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/studentID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:id="@+id/profileSaveButton" />
+
 </RelativeLayout>

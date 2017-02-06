@@ -22,6 +22,19 @@ public class SharedPreferenceHelper{
         editor.commit();
     }
 
+    public void saveAge(String age){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("profileAge",age);
+        editor.commit();
+
+    }
+
+    public void saveID(String id){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("studentID", id);
+        editor.commit();
+    }
+
     public String getProfileName(){
         return sharedPreferences.getString("profileName",null);
     }

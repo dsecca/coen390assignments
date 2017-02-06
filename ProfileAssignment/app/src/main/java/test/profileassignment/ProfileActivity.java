@@ -17,6 +17,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileToolbar = (Toolbar) findViewById(R.id.profileToolbar);
         setSupportActionBar(profileToolbar);
+        //Enable the Up button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
