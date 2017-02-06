@@ -21,4 +21,8 @@ public class SharedPreferenceHelper{
         editor.putString("profileName",name);
         editor.commit();
     }
+
+    public String getProfileName(){
+        return sharedPreferences.getString("profileName",null);
+    }
 }
