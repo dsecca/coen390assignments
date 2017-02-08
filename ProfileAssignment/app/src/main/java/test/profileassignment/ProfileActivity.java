@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -16,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected EditText profileName = null;
     protected EditText profileAge = null;
     protected EditText studentID = null;
-    protected Profile profile = null;
+    protected Profile profile = new Profile();
     private SharedPreferenceHelper sharedPreferenceHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,11 @@ public class ProfileActivity extends AppCompatActivity {
                 String name = profileName.getText().toString();
                 String age = profileAge.getText().toString();
                 String id = studentID.getText().toString();
-                sharedPreferenceHelper.saveProfileName(name);//here we'll pass in the newly saved object to the shared preferences
+                profile.saveName(name);
+                profile.saveAge(age);
+                profile.saveID(id);
+                //here we'll pass in the newly saved object to the shared preferences
+                sharedPreferenceHelper.saveProfile(profile);
 
                 /*Toast toast = Toast.makeText(getApplicationContext(), "saved" , Toast.LENGTH_LONG);
                 toast.show();*/

@@ -11,18 +11,37 @@ import android.content.SharedPreferences;
 public class SharedPreferenceHelper{
 
     private SharedPreferences sharedPreferences;
+    protected Profile profile = new Profile();
     public SharedPreferenceHelper(Context context){
 
         sharedPreferences = context.getSharedPreferences("ProfilePreference",Context.MODE_PRIVATE);
     }
 
-    /*public void saveProfile(Profile profile){
+    public void saveProfile(Profile profle){
+        profile = profle;
+        this.saveProfileName(profile.getName());
+        this.saveProfileAge(profile.getAge());
+        this.saveStudentID(profile.getID());
+    }
+    public void saveProfileName(String name){
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("profileName",profile);
+        editor.putString("profileName",name);
         editor.commit();
-    }*/
+    }
 
-    public String getProfileName(){
-        return sharedPreferences.getString("profileName",null);
+    public void saveProfileAge(String age){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("profileAge",age);
+        editor.commit();
+    }
+
+    public void saveStudentID(String id){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("studentID",id);
+        editor.commit();
+    }
+
+    public Profile getProfile(){
+        return this.profile;
     }
 }

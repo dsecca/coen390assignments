@@ -6,14 +6,14 @@ package test.profileassignment;
 
 public class Profile {
 
-    private String name;
-    private String age;
-    private String id;
+    protected String name;
+    protected String age;
+    protected String id;
 
-    public Profile(String n, String a, String i){
-        name = n;
-        age = a;
-        id = i;
+    public Profile(){
+        name = null;
+        age = null;
+        id = null;
     }
 
     public void saveName(String name){

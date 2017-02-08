@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart(){
         super.onStart();
-        String profileName = sharedPreferenceHelper.getProfileName();
+        Profile profile = sharedPreferenceHelper.getProfile();
 
-        if(profileName == null){
-            mainActivityButton.setText(profileName);
+        if(profile.getName() == null){
+            goToProfileActivity();
         }
         else{
-            goToProfileActivity();
+            mainActivityButton.setText(profile.getName());
         }
     }
     public void goToProfileActivity(){
