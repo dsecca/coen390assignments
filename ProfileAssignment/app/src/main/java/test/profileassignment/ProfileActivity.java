@@ -17,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected EditText profileName = null;
     protected EditText profileAge = null;
     protected EditText studentID = null;
-    protected Profile profile = new Profile();
+    protected static Profile profile = new Profile();
     private SharedPreferenceHelper sharedPreferenceHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +42,20 @@ public class ProfileActivity extends AppCompatActivity {
                 String name = profileName.getText().toString();
                 String age = profileAge.getText().toString();
                 String id = studentID.getText().toString();
+
+                /*System.out.println(name);
+                System.out.println(age);
+                System.out.println(id);*/
+
                 profile.saveName(name);
                 profile.saveAge(age);
                 profile.saveID(id);
+
+                /*System.out.println(profile.getName());
+                System.out.println(profile.getAge());
+                System.out.println(profile.getID());*/
+
+
                 //here we'll pass in the newly saved object to the shared preferences
                 sharedPreferenceHelper.saveProfile(profile);
 
@@ -53,6 +64,12 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        if((profile.getName() != null) && (profile.getAge() != null) && (profile.getID() != null)){
+            profileName.setText(profile.getName());
+            profileAge.setText(profile.getAge());
+            studentID.setText(profile.getID());
+        }
     }
 
     //Create the menu on the toolbar

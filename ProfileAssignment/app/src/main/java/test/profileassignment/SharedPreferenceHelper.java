@@ -11,7 +11,7 @@ import android.content.SharedPreferences;
 public class SharedPreferenceHelper{
 
     private SharedPreferences sharedPreferences;
-    protected Profile profile = new Profile();
+    protected static Profile profile = new Profile();
     public SharedPreferenceHelper(Context context){
 
         sharedPreferences = context.getSharedPreferences("ProfilePreference",Context.MODE_PRIVATE);
