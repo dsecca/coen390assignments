@@ -17,6 +17,7 @@ public class SharedPreferenceHelper{
         sharedPreferences = context.getSharedPreferences("ProfilePreference",Context.MODE_PRIVATE);
     }
 
+    //Save the profile by using the SharedPreferneceHelper methods to save text entries
     public void saveProfile(Profile profle){
         profile = profle;
         this.saveProfileName(profile.getName());
@@ -41,6 +42,7 @@ public class SharedPreferenceHelper{
         editor.commit();
     }
 
+    //Return the profile
     public Profile getProfile(){
         return this.profile;
     }
