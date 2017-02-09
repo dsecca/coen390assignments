@@ -44,6 +44,7 @@
         android:layout_alignEnd="@+id/profileAge"
         android:layout_marginTop="57dp"
         android:id="@+id/studentID"
+        android:maxLength="6"
         android:hint="Student ID" />
 
     <EditText

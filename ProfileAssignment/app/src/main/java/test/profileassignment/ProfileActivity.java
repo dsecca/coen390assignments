@@ -132,8 +132,8 @@ public class ProfileActivity extends AppCompatActivity {
                 //here we'll pass in the newly saved object to the shared preferences
                 sharedPreferenceHelper.saveProfile(profile);
 
-                /*Toast toast = Toast.makeText(getApplicationContext(), "saved" , Toast.LENGTH_LONG);
-                toast.show();*/
+                Toast toast = Toast.makeText(getApplicationContext(), "Information Saved!" , Toast.LENGTH_LONG);
+                toast.show();
 
                 //Make fields unedittable again
                 profileName.setFocusable(false);
