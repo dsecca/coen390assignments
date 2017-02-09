@@ -45,35 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         //is pressed
         profileSaveButton = (Button) findViewById(R.id.profileSaveButton);
         profileSaveButton.setVisibility(View.INVISIBLE);
-        /*profileSaveButton = (Button) findViewById(R.id.profileSaveButton);
 
-
-        profileSaveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                String name = profileName.getText().toString();
-                String age = profileAge.getText().toString();
-                String id = studentID.getText().toString();
-
-                profile.saveName(name);
-                profile.saveAge(age);
-                profile.saveID(id);
-
-
-                //here we'll pass in the newly saved object to the shared preferences
-                sharedPreferenceHelper.saveProfile(profile);
-
-                /*Toast toast = Toast.makeText(getApplicationContext(), "saved" , Toast.LENGTH_LONG);
-                toast.show();*/
-
-            //}
-       // });*/
-
-        /*if((profile.getName() != null) && (profile.getAge() != null) && (profile.getID() != null)){
-            profileName.setText(profile.getName());
-            profileAge.setText(profile.getAge());
-            studentID.setText(profile.getID());
-        }*/
     }
 
     //Create the menu on the toolbar
@@ -124,25 +96,46 @@ public class ProfileActivity extends AppCompatActivity {
                 String age = profileAge.getText().toString();
                 String id = studentID.getText().toString();
 
-                profile.saveName(name);
-                profile.saveAge(age);
-                profile.saveID(id);
+                if(!correctAge(age)){
+                    Toast toast = Toast.makeText(getApplicationContext(), "Must be 18-99 years old. Nothing saved!" , Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                else{
+                    profile.saveName(name);
+                    profile.saveAge(age);
+                    profile.saveID(id);
 
+                    //here we'll pass in the newly saved object to the shared preferences
+                    sharedPreferenceHelper.saveProfile(profile);
 
-                //here we'll pass in the newly saved object to the shared preferences
-                sharedPreferenceHelper.saveProfile(profile);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Information Saved!" , Toast.LENGTH_LONG);
+                    toast.show();
 
-                Toast toast = Toast.makeText(getApplicationContext(), "Information Saved!" , Toast.LENGTH_LONG);
-                toast.show();
-
-                //Make fields unedittable again
-                profileName.setFocusable(false);
-                profileAge.setFocusable(false);
-                studentID.setFocusable(false);
-                profileSaveButton.setVisibility(View.INVISIBLE);
+                    //Make fields unedittable again
+                    profileName.setFocusable(false);
+                    profileAge.setFocusable(false);
+                    studentID.setFocusable(false);
+                    profileSaveButton.setVisibility(View.INVISIBLE);
+                }
 
 
             }
         });
+    }
+
+    protected boolean correctAge(String a){
+        boolean ok = true;
+        if((a.length() == 3 || a.length() == 1) ||
+                (a.startsWith("1") && (a.endsWith("0")
+                        ||a.endsWith("1")
+                        ||a.endsWith("2")
+                        || a.endsWith("3")
+                        ||a.endsWith("4")
+                        ||a.endsWith("5")
+                        ||a.endsWith("6")
+                        ||a.endsWith("7")))){
+            ok = false;
+        }
+        return ok;
     }
 }
