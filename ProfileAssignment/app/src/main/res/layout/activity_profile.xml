@@ -53,6 +53,7 @@
         android:ems="10"
         android:layout_marginTop="87dp"
         android:id="@+id/profileName"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:layout_below="@+id/profileToolbar"
         android:layout_centerHorizontal="true"
         android:hint="Name" />
