@@ -31,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Check whether a profile was created
     protected void onStart(){
         super.onStart();
+        //Get the profile from Shared Preferences
         Profile profile = sharedPreferenceHelper.getProfile();
 
         if(profile.getName() == null){

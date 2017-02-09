@@ -32,11 +32,12 @@ public class ProfileActivity extends AppCompatActivity {
         //Enable the Up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Initialize EditText variables for manipulation
         profileName = (EditText) findViewById(R.id.profileName);
         profileAge = (EditText) findViewById(R.id.profileAge);
         studentID = (EditText) findViewById(R.id.studentID);
 
-        //Initially make fields unedittable
+        //Initially make fields uneditable
         profileName.setFocusable(false);
         profileAge.setFocusable(false);
         studentID.setFocusable(false);
@@ -73,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    //Wen returning to the Profile Page, show the information stored within the profile
     protected void onStart(){
         super.onStart();
         Profile profile = sharedPreferenceHelper.getProfile();
@@ -82,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
         studentID.setText(profile.getID());
     }
 
+    //Edit fields function
     protected void editFields(){
         //All fields to be editable
         profileName.setFocusableInTouchMode(true);
@@ -89,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
         studentID.setFocusableInTouchMode(true);
         profileSaveButton.setVisibility(View.VISIBLE);
 
+        //When save button is pressed, save fields to Shared Preferences
         profileSaveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -96,10 +100,14 @@ public class ProfileActivity extends AppCompatActivity {
                 String age = profileAge.getText().toString();
                 String id = studentID.getText().toString();
 
+                //Check if user put in a valid age
                 if(!correctAge(age)){
                     Toast toast = Toast.makeText(getApplicationContext(), "Must be 18-99 years old. Nothing saved!" , Toast.LENGTH_LONG);
                     toast.show();
                 }
+                //If user put in a valid age, we can save the data
+                //NOTE: The Student ID and Name field data are monitored using the android::digits
+                // declaration in the activity_profile.xml file
                 else{
                     profile.saveName(name);
                     profile.saveAge(age);
@@ -123,6 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    //Function for checking age input by user
     protected boolean correctAge(String a){
         boolean ok = true;
         if((a.length() == 3 || a.length() == 1) ||
